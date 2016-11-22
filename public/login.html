@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html ng-app='myApp'>
+    <head>
+        <title>Resume</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        
+    </head>
+    <body>
+        
+		<div class="row">
+			<div class="col-sm-offset-3 col-sm-6">
+				<form class="form-signin" action="admin.html" method = "GET">
+					<h2 class="form-signin-heading">Please Sign In</h2>
+					<label for="username" class="sr-only">Username</label> 
+						<input type="text" name="username" id="username" class="form-control" placeholder="Username" /> 
+						
+					<label for="password" class="sr-only">Password</label> 
+					<input type="password" name="password" id="password" class="form-control" placeholder="Password" />
+
+					<button class="btn btn-lg btn-primary btn-block" name="Login" value="Login" type="submit">Sign in</button>
+				</form>
+			</div>
+		</div>
+		
+		
+		
+		
+		
+        <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js'>
+        </script>
+        <script src='controllers/controller.js'></script>
+    </body>
+</html>

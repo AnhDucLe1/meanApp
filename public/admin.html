@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html ng-app='admin'>
+    <head>
+        <title>Contact List App</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        
+    </head>
+    <body>
+        <div class='container' ng-controller='AppCtrl'>
+            <h2>Admin Page</h2>
+			<h3>Education</h3>
+            <table class='table table-hover'>
+                <thead>
+                    <tr>
+                        <th>School</th>
+                        <th>Degree</th>
+                        <th>Last Year</th>
+						<th>Action</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input class ="form-control" ng-model ="contact.name"></td>
+                        <td><input class ="form-control" ng-model ="contact.email"></td>
+                        <td><input class ="form-control" ng-model ="contact.number"></td>
+                        <td> <button class="btn btn-primary" ng-click="addContact()">Add Contact</button></td>
+                        <td> <button class="btn btn-info" ng-click="update()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselect()">Clear</button></td> 
+                    </tr>
+                    <tr ng-repeat='contact in contactlist'>
+                        <td>{{contact.name}}</td>
+                        <td>{{contact.email}}</td>
+                        <td>{{contact.number}}</td>
+						<td><button class = "btn btn-danger" ng-click = "remove(contact._id)">Remove</button></td>
+                        <td><button class = "btn btn-warming" ng-click = "edit(contact._id)">Edit</button></td>
+                    </tr>
+                </tbody>
+            </table>
+			
+			<h3>Skills</h3>	
+			<table class='table table-hover'>
+                <thead>
+                    <tr>
+                        <th>Skill</th>
+						<th>Action</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input class ="form-control" ng-model ="contact.name"></td>
+                        <td> <button class="btn btn-primary" ng-click="addContact()">Add Contact</button></td>
+                        <td> <button class="btn btn-info" ng-click="update()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselect()">Clear</button></td> 
+                    </tr>
+                    <tr ng-repeat='contact in contactlist'>
+                        <td>{{contact.name}}</td>
+						<td><button class = "btn btn-danger" ng-click = "remove(contact._id)">Remove</button></td>
+                        <td><button class = "btn btn-warming" ng-click = "edit(contact._id)">Edit</button></td>
+                    </tr>
+                </tbody>
+            </table>
+			
+			<h3>Project</h3>	
+
+			<table class='table table-hover'>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+						<th>Action</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input class ="form-control" ng-model ="contact.name"></td>
+                        <td><input class ="form-control" ng-model ="contact.email"></td>
+                        <td> <button class="btn btn-primary" ng-click="addContact()">Add Contact</button></td>
+                        <td> <button class="btn btn-info" ng-click="update()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselect()">Clear</button></td> 
+                    </tr>
+                    <tr ng-repeat='contact in contactlist'>
+                        <td>{{contact.name}}</td>
+                        <td>{{contact.email}}</td>
+						<td><button class = "btn btn-danger" ng-click = "remove(contact._id)">Remove</button></td>
+                        <td><button class = "btn btn-warming" ng-click = "edit(contact._id)">Edit</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js'>
+        </script>
+        <script src='controllers/controller.js'></script>
+    </body>
+</html>
