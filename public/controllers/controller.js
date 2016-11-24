@@ -20,18 +20,38 @@ admin.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
 
 
 var refresh = function() {
-  $http.get('/contactlist').success(function(response) {
+  $http.get('/resume').success(function(response) {
     console.log("I got the data I requested");
-    $scope.contactlist = response;
-    $scope.contact = "";
+    $scope.resume = response;
+    $scope.item = "";
   });
 };
 
 refresh();
 
-$scope.addContact = function() {
-  console.log($scope.contact);
-  $http.post('/contactlist', $scope.contact).success(function(response) {
+$scope.addSkill = function() {
+
+  console.log($scope.item);
+  $scope.item.type = "skill";
+  $http.post('/resume', $scope.item).success(function(response) {
+    console.log(response);
+    refresh();
+  });
+};
+$scope.addProject = function() {
+
+  console.log($scope.item);
+  $scope.item.type = "project";
+  $http.post('/resume', $scope.item).success(function(response) {
+    console.log(response);
+    refresh();
+  });
+};
+$scope.addEducation = function() {
+
+  console.log($scope.item);
+  $scope.item.type = "edu";
+  $http.post('/resume', $scope.item).success(function(response) {
     console.log(response);
     refresh();
   });
@@ -39,27 +59,54 @@ $scope.addContact = function() {
 
 $scope.remove = function(id) {
   console.log(id);
-  $http.delete('/contactlist/' + id).success(function(response) {
+  $http.delete('/resume/' + id).success(function(response) {
     refresh();
   });
 };
 
 $scope.edit = function(id) {
   console.log(id);
-  $http.get('/contactlist/' + id).success(function(response) {
-    $scope.contact = response;
+  $http.get('/resume/' + id).success(function(response) {
+    $scope.item = response;
   });
 };  
 
 $scope.update = function() {
-  console.log($scope.contact._id);
-  $http.put('/contactlist/' + $scope.contact._id, $scope.contact).success(function(response) {
+  console.log($scope.item._id);
+  $http.put('/resume/' + $scope.item._id, $scope.item).success(function(response) {
     refresh();
   })
 };
 
 $scope.deselect = function() {
-  $scope.contact = "";
+  $scope.item = "";
 }
 
 }]);﻿
+
+var app = angular.module('mainApp', ['ngRoute']);
+app.config(function($routeProvider){
+  $routeProvider
+  .when('/', {
+    templateUrl: 'login.html'
+  })
+  .when('/admin', {
+    templateUrl: 'admin.html'
+  })
+  .otherwise({
+    redirectTo: '/'
+  });
+});
+app.controller('loginCrtl',function($scope,$location){
+  $scope.submit = function(){
+    var uname = $scope.username;
+    var password = $scope.password;
+    console.log('Do i got here');
+    if($scope.username == 'admin' && $scope.password == 'admin'){
+      $location.path('/admin');
+    }
+    else{
+      alert('Fail to Login');
+    }
+  }
+})
